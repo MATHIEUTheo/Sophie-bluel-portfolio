@@ -2,6 +2,7 @@ async function afficherWorks() {
     const reponse = await fetch("http://localhost:5678/api/works")
     const works = await reponse.json()
     console.log(works)
+    effaceGallery()
     for (let i= 0; i< works.length; i++) {
         var fig = works[i]
         var gallery = document.querySelector(".gallery")
@@ -18,6 +19,7 @@ async function afficherObjets(categorie) {
   var works = await reponse.json()
   var objets = works.filter(function(objets){ return objets.categoryId == categorie})
   console.log(objets)
+effaceGallery()
   for (let i= 0; i< objets.length; i++) {
       var fig = objets[i]
       var gallery = document.querySelector(".gallery")
@@ -29,7 +31,13 @@ async function afficherObjets(categorie) {
   }
 }
 
-afficherWorks()
+function effaceGallery(){
+  var gallery = document.querySelector(".gallery")
+  while (gallery.firstChild) {
+    gallery.removeChild(gallery.firstChild);
+  } 
+}
+// afficherWorks()
 // afficherObjets("1")
 
 //onclick="afficherObjets('1')"
