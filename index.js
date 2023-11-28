@@ -30,6 +30,7 @@ effaceGallery()
       gallery.appendChild(workellements)
   }
 }
+afficherWorks()
 
 function effaceGallery(){
   var gallery = document.querySelector(".gallery")
