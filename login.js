@@ -39,19 +39,33 @@
 //   });
   
   function mysubmit(){
+    localStorage.removeItem("token");
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
-    console.log(email+" "+password);
   
-     fetch("http://localhost:5678/api/users/login", {
-       method: "POST",
-       headers: {
-         Accept: "application/json, text/plain, */*",
-         "Content-Type": "application/json",
-       },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-     });
+    const url = 'http://localhost:5678/api/users/login';
+      const response = fetch(url, 
+        {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json"
+                },
+               body: JSON.stringify({
+                 email: email,
+                 password: password,
+               }),
+              })
+              .then((response) => response.json())
+              .then(json => {
+                localStorage.setItem("token", json.token)
+                console.log("loginResponse", `localStorage set with token value: ${json.token}`)
+                if (localStorage.getItem("token") == "undefined") {
+                  alert("Error Password or Username");
+                }else{
+                  location.href = '/';
+                }
+
+            });
+
   }

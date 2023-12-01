@@ -38,6 +38,11 @@ function effaceGallery(){
     gallery.removeChild(gallery.firstChild);
   } 
 }
+
+if (localStorage.getItem("token") != "undefined" && localStorage.getItem("token")!=null) {
+  document.getElementById("#urllogin").textContent="logout";
+  console.log("I'm here");
+}
 // afficherWorks()
 // afficherObjets("1")
 

@@ -246,7 +246,7 @@ footer nav ul {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-button[type="button"]{
+#login button[type="button"]{
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
